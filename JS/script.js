@@ -33,4 +33,5 @@ function colorbadlo()
         
         h.className = classes[c];
         h.innerHTML = words[c];
+    }
 }
