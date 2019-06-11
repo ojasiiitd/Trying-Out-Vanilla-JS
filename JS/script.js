@@ -1,37 +1,34 @@
-var h = document.getElementById("heading");
-var c = -1;
+var balls = document.getElementsByClassName("eyeballs");
 
-document.body.addEventListener("keydown" , colorbadlo);
+console.log(balls)
 
-function colorbadlo()
+window.addEventListener("mousedown" , colorIt);
+window.addEventListener("mouseup" , prevv);
+window.addEventListener("mousemove" , move)
+
+function colorIt()
 {
-    var kc = event.keyCode;
-    if(kc == 39)
+    for(var i=0 ; i<balls.length ; i++)
     {
-        c++;
+        balls[i].style["background-color"] = "blue";
     }
-    else if(kc == 37)
-    {
-        c--;
-    }
-    else
-    {
-        kc = null;
-    }
-    if(c === 7)
-    {
-        c = 0;
-    }
-    else if(c == -1)
-    {
-        c = 6;
-    }
+}
 
-    if(kc)
+function prevv()
+{
+    for(var i=0 ; i<balls.length ; i++)
     {
-        var classes = ["is-size-1 has-text-warning" , "is-size-1 has-text-dark" , "is-size-1 has-text-success" , "is-size-1 has-text-info" , "is-size-1 has-text-danger" , "is-size-1 has-text-primary" , "is-size-1 has-text-link"] , words = ["are" , "you" , "ready" , "to" , "be" , "fully" , "amazed?"];
-        
-        h.className = classes[c];
-        h.innerHTML = words[c];
+        balls[i].style["background-color"] = "black";
+    }
+}
+
+function move()
+{
+    var e = window.event;
+    console.log(e.clientX + " " + e.clientY);
+    var x = (-e.clientX / 25) , y = (-e.clientY / 10);
+    for(var i=0 ; i<balls.length ; i++)
+    {
+        balls[i].style["transform"] = "translate(" + x + "px" + "," + y + "px)";
     }
 }
