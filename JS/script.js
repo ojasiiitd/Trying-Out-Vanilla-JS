@@ -1,34 +1,28 @@
-var balls = document.getElementsByClassName("eyeballs");
+var f = document.getElementById("firs"),
+    s = document.getElementById("sec"),
+    t = document.getElementById("thir");
 
-console.log(balls)
+window.addEventListener("scroll" , showScroll)
 
-window.addEventListener("mousedown" , colorIt);
-window.addEventListener("mouseup" , prevv);
-window.addEventListener("mousemove" , move)
-
-function colorIt()
+function showScroll()
 {
-    for(var i=0 ; i<balls.length ; i++)
+    var y = window.scrollY;
+    
+    if(y >= 0)
     {
-        balls[i].style["background-color"] = "blue";
+        f.style.transition = ".8s ease all";
+        f.style.opacity = "1";
     }
-}
 
-function prevv()
-{
-    for(var i=0 ; i<balls.length ; i++)
+    if(y >= 400)
     {
-        balls[i].style["background-color"] = "black";
+        s.style.transition = ".8s ease all";
+        s.style.opacity = "1";
     }
-}
-
-function move()
-{
-    var e = window.event;
-    console.log(e.clientX + " " + e.clientY);
-    var x = (-e.clientX / 25) , y = (-e.clientY / 10);
-    for(var i=0 ; i<balls.length ; i++)
+    
+    if(y >= 1300)
     {
-        balls[i].style["transform"] = "translate(" + x + "px" + "," + y + "px)";
+        t.style.transition = ".8s ease all";
+        t.style.opacity = "1";
     }
 }
